@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Zombie 1
   m_EditorClassIdentifier: 
   _health: 1
-  _speed: 10
+  _speed: 2
   _reward: 100

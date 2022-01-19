@@ -14,7 +14,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage()
     {
         if(_currentHealth > 0) _currentHealth--;
-        else Kill();
+        if(_currentHealth == 0) Kill();
 
     }
     private void Kill()

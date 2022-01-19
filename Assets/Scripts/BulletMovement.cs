@@ -10,6 +10,7 @@ public class BulletMovement : MonoBehaviour
     private void Start()
     {
         Init();
+         _rb.AddForce(transform.forward * _speed);
         
     }
     private void Init()
@@ -21,10 +22,6 @@ public class BulletMovement : MonoBehaviour
         _transform.rotation = Quaternion.Euler(0, -rotationY + 90, 0);
         Destroy(gameObject, 2f);
         _rb = GetComponent<Rigidbody>();
-    }
-    private void Update()
-    {
-        _rb.AddForce(transform.forward * _speed);
     }
     private void OnCollisionEnter(Collision other) 
     {

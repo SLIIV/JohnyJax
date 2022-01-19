@@ -8,6 +8,6 @@ public class EnemyParamenters : ScriptableObject
     [SerializeField] private int _reward;
 
     public int Health { get { return _health; } }
-    public float Speed {get {return _health; } }
+    public float Speed {get {return _speed; } }
     public int Reward {get {return _reward; } }
 }

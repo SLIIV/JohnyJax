@@ -12,16 +12,12 @@ public class EnemiesSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyByDelay(_spawnTime));
     }
-    private Vector2 GetRandomPointOnRound(Vector2 center, float radius)
-    {
-        return center + new Vector2(Random.value - 0.5f, Random.value - 0.5f).normalized * radius;
-    }
     private Vector3 GetRandomPointOnRound(Vector3 center, float radius)
     {
         return center + new Vector3(Random.value - 0.5f, 0, Random.value - 0.5f).normalized * radius;
     }
 
-    private GameObject GetRandomEnemy()
+    private GameObject GetRandomEnemy() //заменить название метода
     {
         int rand = Random.Range(0, _enemies.Length);
         return _enemies[rand];

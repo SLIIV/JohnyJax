@@ -5,12 +5,18 @@ public class HandsController : MonoBehaviour
     private WeaponController.WeaponObject _weapon;
     private void Start() 
     {
+        SetDefaultWeapon();
+    }
+
+    private void SetDefaultWeapon()
+    {
         WeaponController.WeaponObject weapon;
         if(weapon = gameObject.GetComponentInChildren<WeaponController.WeaponObject>())
         {
             TakeGun(weapon);
         }
     }
+
     private void TakeGun(WeaponController.WeaponObject weaponToTake)
     {
         WeaponController.FireData.Instance.WeaponObject = weaponToTake;

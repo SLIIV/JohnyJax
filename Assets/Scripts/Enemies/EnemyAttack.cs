@@ -10,6 +10,8 @@ public class EnemyAttack : MonoBehaviour
     public static UnityEvent OnHitted = new UnityEvent();
     [SerializeField] private float _attackDelay;
     [SerializeField] private float _reloadTime;
+    [SerializeField] private float _attackDistance;
+    [SerializeField] private float _attackRadius;
     private EnemiesAnimation _animations;
     private bool _isReload;
     private int _playerMask = 1 << 8;
@@ -35,7 +37,7 @@ public class EnemyAttack : MonoBehaviour
     }
     private void Attack()
     {
-        if(PlayerCastState(0.3f, 0.3f))
+        if(PlayerCastState(_attackRadius, _attackDistance))
         {
             if(!_isReload)
             {
@@ -49,7 +51,7 @@ public class EnemyAttack : MonoBehaviour
     private IEnumerator AttackWithDelay(float delay, float reloadTime)
     {
         yield return new WaitForSeconds(delay);
-        if(PlayerCastState(0.3f, 0.3f))
+        if(PlayerCastState(_attackRadius, _attackDistance))
         {
             OnHitted.Invoke();
         }

@@ -15,7 +15,8 @@ namespace PlayerController
         {
             if(Input.HorizontalAxis != 0 || Input.VerticalAxis !=0)
             {
-                MovementData.Instance.Player.transform.position += (Input.SideDirection + Input.ForwardDirection).normalized * MovementData.Instance.Speed * Time.fixedDeltaTime;
+                MovementData.Instance.Player.transform.position += 
+                (Input.SideDirection + Input.ForwardDirection).normalized * MovementData.Instance.Speed * Time.fixedDeltaTime;
             }
         }
         private void Rotate()
