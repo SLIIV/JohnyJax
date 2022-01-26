@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ChangeSoundVolume(float value)
     {
-        
+        PlayerPrefs.SetFloat(RegisteryAddresses.SOUND_VOLUME, value);
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ChangeMusicVolume(float value)
     {
-        
+        PlayerPrefs.SetFloat(RegisteryAddresses.MUSIC_VOLUME, value);
     }
 }

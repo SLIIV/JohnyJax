@@ -10,7 +10,7 @@ public class MenuButtons : MonoBehaviour
     }
     public void Play()
     {
-        GameSceneManager.StartNewGame();
+        StartCoroutine(GameSceneManager.LoadSceneAsync(GameSceneManager.FIRST_GAME_SCENE_NUMBER));
     }
 
 }
