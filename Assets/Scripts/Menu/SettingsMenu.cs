@@ -9,6 +9,7 @@ public class SettingsMenu : MonoBehaviour
     {
         PlayerPrefs.SetFloat(RegisteryAddresses.SOUND_VOLUME, value);
     }
+    
     public void ChangeMusicVolume(float value)
     {
         PlayerPrefs.SetFloat(RegisteryAddresses.MUSIC_VOLUME, value);

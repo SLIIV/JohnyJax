@@ -20,7 +20,6 @@ public class GameSceneManager : MonoBehaviour
     {
         LoadingLevelPrecent = 0;
         AsyncOperation asyncLoading = SceneManager.LoadSceneAsync(sceneNumber);
-        Debug.Log("LoadingStarted");
         while(!asyncLoading.isDone)
         {
             LoadingLevelPrecent = asyncLoading.progress;

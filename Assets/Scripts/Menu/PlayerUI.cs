@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] _healthObjects = new GameObject[CharacterStats.MAX_HEALTH];
-    [SerializeField] private GameObject _PauseMenu;
+    [SerializeField] private GameObject _pauseMenu;
+    [SerializeField] private Text _ammoCount;
+
     private void Start() 
     {
         EnemyAttack.OnHitted.AddListener(() => TakeHealth());
         GameState.OnPause.AddListener(() => OpenPause());
+        CharacterStats.OnAmmoChanged.AddListener(() => UpdateAmmoUI());
     }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)) // заменить на статическое поле из класса настроек
@@ -24,10 +29,12 @@ public class PlayerUI : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void LoadMainMenu()
     {
         GameSceneManager.LoadMainMenu();
     }
+
     public void Continue()
     {
         ClosePause();
@@ -37,21 +44,28 @@ public class PlayerUI : MonoBehaviour
     {
         if(!GameState.IsPause)
         {
-            _PauseMenu.SetActive(true);
+            _pauseMenu.SetActive(true);
             CameraStates.PauseCamera();
             GameState.IsPause = true;
         }
     }
+    
     private void ClosePause()
     {
 
-        _PauseMenu.SetActive(false);
+        _pauseMenu.SetActive(false);
         CameraStates.UnpauseCamera();
         GameState.IsPause = false;
     }
+
     private void TakeHealth()
     {
         _healthObjects[CharacterStats.CurrentHealth].SetActive(false);
+    }
+
+    private void UpdateAmmoUI()
+    {
+        _ammoCount.text = CharacterStats.CurrentAmmo.ToString();
     }
 
     private void OnDisable() 

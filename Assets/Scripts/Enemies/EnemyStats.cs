@@ -11,12 +11,14 @@ public class EnemyStats : MonoBehaviour
     {
         _currentHealth = Stats.Health;
     }
+
     public void TakeDamage()
     {
         if(_currentHealth > 0) _currentHealth--;
         if(_currentHealth == 0) Kill();
 
     }
+    
     private void Kill()
     {
         OnDeath.Invoke(Stats);

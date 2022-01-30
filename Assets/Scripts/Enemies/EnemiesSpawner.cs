@@ -12,9 +12,11 @@ public class EnemiesSpawner : MonoBehaviour
     {
         StartCoroutine(SpawnEnemyByDelay(_spawnTime));
     }
-    private Vector3 GetRandomPointOnRound(Vector3 center, float radius)
+    private Vector3 GetRandomPointOnRound(float radius)
     {
-        return center + new Vector3(Random.value - 0.5f, 0, Random.value - 0.5f).normalized * radius;
+       Vector2 pointOnCircle = PlayerController.MovementData.GetRandomPointInCircle();
+       Vector3 pointOnRound = new Vector3(pointOnCircle.x, 0, pointOnCircle.y) * radius;
+       return pointOnRound;
     }
 
     private GameObject GetRandomEnemy() //заменить название метода
@@ -25,7 +27,7 @@ public class EnemiesSpawner : MonoBehaviour
     private void CreateEnemy()
     {
         Vector3 center = PlayerController.MovementData.Instance.Player.transform.position;
-        Vector3 point = GetRandomPointOnRound(center, _radius);
+        Vector3 point =  center + GetRandomPointOnRound(_radius);
         GameObject enemy = Instantiate(GetRandomEnemy(), point, Quaternion.identity);
         
     }

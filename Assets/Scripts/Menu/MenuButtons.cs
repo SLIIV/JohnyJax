@@ -8,6 +8,7 @@ public class MenuButtons : MonoBehaviour
     {
         Application.Quit();
     }
+    
     public void Play()
     {
         StartCoroutine(GameSceneManager.LoadSceneAsync(GameSceneManager.FIRST_GAME_SCENE_NUMBER));

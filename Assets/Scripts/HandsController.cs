@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class HandsController : MonoBehaviour
 {
     private WeaponController.WeaponObject _weapon;
+
     private void Start() 
     {
         SetDefaultWeapon();
@@ -28,6 +30,11 @@ public class HandsController : MonoBehaviour
         if(collider.TryGetComponent<WeaponController.WeaponObject>(out _weapon))
         {
             TakeGun(_weapon);
+        }
+        if(collider.GetComponent<AmmoBox>())
+        {
+            AmmoBox.AddAmmo();
+            Destroy(collider.gameObject);
         }
     }
 }

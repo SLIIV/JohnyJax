@@ -7,12 +7,14 @@ public class BulletMovement : MonoBehaviour
     private Transform _transform;
     private float _speed;
     private Rigidbody _rb;
+
     private void Start()
     {
         Init();
          _rb.AddForce(transform.forward * _speed);
         
     }
+
     private void Init()
     {
         _transform = GetComponent<Transform>();
@@ -23,6 +25,7 @@ public class BulletMovement : MonoBehaviour
         Destroy(gameObject, 2f);
         _rb = GetComponent<Rigidbody>();
     }
+    
     private void OnCollisionEnter(Collision other) 
     {
         EnemyStats enemy;

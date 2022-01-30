@@ -11,6 +11,7 @@ namespace PlayerController
             Move();
             Rotate();
         }
+
         private void Move()
         {
             if(Input.HorizontalAxis != 0 || Input.VerticalAxis !=0)
@@ -19,6 +20,7 @@ namespace PlayerController
                 (Input.SideDirection + Input.ForwardDirection).normalized * MovementData.Instance.Speed * Time.fixedDeltaTime;
             }
         }
+        
         private void Rotate()
         {
             Vector3 deltaMousepos = Input.MousePosition - MovementData.Instance.Player.transform.position;
